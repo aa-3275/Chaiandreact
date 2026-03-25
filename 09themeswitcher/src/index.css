@@ -1,0 +1,6 @@
+@import "tailwindcss";
+
+/* Galat: @custom-variant */
+/* Sahi: @variant */
+
+@variant dark (&:where(.dark, .dark *));

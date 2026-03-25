@@ -1,0 +1,42 @@
+/* Favourites.css */
+
+.favourites {
+  padding: 2rem 5%;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.favourites h2 {
+  margin-bottom: 2rem;
+  font-size: 2rem;
+}
+
+/* Reusing the grid layout from Home page */
+.movies-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 2rem;
+  width: 100%;
+}
+
+/* Styling the empty state to center it on the screen */
+.favourites-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 60vh;
+  text-align: center;
+  padding: 2rem;
+}
+
+.favourites-empty h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  color: #fff;
+}
+
+.favourites-empty p {
+  color: #999;
+  font-size: 1.2rem;
+}

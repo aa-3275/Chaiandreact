@@ -1,0 +1,281 @@
+/* Remove padding here so the hero banner can touch the edges */
+.home {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* HERO BANNER STYLES */
+.hero-banner {
+  width: 100%;
+  height: 70vh; /* Takes up 70% of the screen height */
+  background-size: cover;
+  background-position: center top;
+  position: relative;
+  color: white;
+  margin-top: -80px; /* Pulls the banner up under the transparent navbar (optional tweak!) */
+}
+
+/* Cinematic dual-gradient: Dark on the left for text, dark on the bottom to blend into the site */
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background:
+    linear-gradient(to top, #101010 0%, transparent 100%),
+    linear-gradient(to right, rgba(0, 0, 0, 0.9) 0%, transparent 60%);
+  display: flex;
+  align-items: center;
+  padding: 0 5%;
+}
+
+.hero-content {
+  max-width: 600px;
+  margin-top: 50px; /* Pushes text down slightly */
+}
+
+.hero-title {
+  font-size: 3.5rem;
+  margin-bottom: 1rem;
+  font-weight: 800;
+  line-height: 1.1;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.hero-overview {
+  font-size: 1.1rem;
+  line-height: 1.5;
+  margin-bottom: 2rem;
+  color: #e5e5e5;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 1rem;
+}
+
+.hero-buttons button {
+  padding: 0.8rem 2rem;
+  font-size: 1.2rem;
+  border-radius: 4px;
+  font-weight: bold;
+  cursor: pointer;
+  border: none;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition:
+    background-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.play-btn {
+  background-color: white;
+  color: black;
+}
+
+.play-btn:hover {
+  background-color: rgba(255, 255, 255, 0.7);
+  transform: scale(1.05);
+}
+
+.info-btn {
+  background-color: rgba(109, 109, 110, 0.7);
+  color: white;
+}
+
+.info-btn:hover {
+  background-color: rgba(109, 109, 110, 0.9);
+  transform: scale(1.05);
+}
+
+/* Add padding back to the rest of the page */
+.home-content {
+  padding: 2rem 5%;
+}
+
+.search-form {
+  max-width: 600px;
+  margin: 0 auto 3rem auto;
+  display: flex;
+  gap: 12px;
+}
+
+.search-input {
+  flex: 1;
+  padding: 12px 20px;
+  border-radius: 25px;
+  border: none;
+  background-color: #333;
+  color: white;
+  font-size: 1rem;
+}
+
+.movies-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 2rem;
+  width: 100%;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  margin-top: 3rem;
+  padding-bottom: 2rem;
+}
+
+.page-btn {
+  padding: 10px 20px;
+  background-color: #e50914;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.page-btn:hover:not(:disabled) {
+  background-color: #b80710;
+}
+
+.page-btn:disabled {
+  background-color: #444;
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.page-info {
+  font-size: 1.1rem;
+  color: white;
+  font-weight: 500;
+}
+
+/* ACCORDION HERO STYLES */
+.hero-accordion {
+  display: flex;
+  width: 100%;
+  height: 60vh;
+  margin-top: -80px; /* Pulls it up behind the navbar */
+  overflow: hidden;
+  background-color: #000;
+}
+
+.accordion-panel {
+  flex: 1; /* By default, panels take up 1 fraction of the space */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+  transition: flex 0.6s cubic-bezier(0.25, 0.8, 0.25, 1); /* Smooth expansion */
+  cursor: pointer;
+  border-right: 2px solid #101010; /* Dark border to separate the panels */
+}
+
+/* When a panel is hovered/active, it expands drastically */
+.accordion-panel.active {
+  flex: 8;
+}
+
+/* Add a dark gradient overlay to make text readable, but only fully dark on the active one */
+.accordion-panel::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, transparent 60%);
+  opacity: 0.3;
+  transition: opacity 0.6s ease;
+}
+
+.accordion-panel.active::before {
+  opacity: 1;
+}
+
+/* ACCORDION TEXT CONTENT */
+.accordion-content {
+  position: absolute;
+  bottom: 2rem;
+  left: 2rem;
+  right: 2rem;
+  color: white;
+  opacity: 0; /* Hidden initially */
+  animation: fadeTextIn 0.5s ease forwards 0.3s; /* Delays text fade-in until expansion starts */
+  max-width: 600px;
+}
+
+@keyframes fadeTextIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.accordion-content h2 {
+  font-size: 2.8rem;
+  margin-bottom: 0.5rem;
+  font-weight: 800;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8);
+}
+
+.accordion-content p {
+  font-size: 1.1rem;
+  margin-bottom: 1.5rem;
+  line-height: 1.5;
+  color: #ddd;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+}
+/* Controls Container holds both the search bar and the genre filter */
+.controls-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  max-width: 800px;
+  margin: 0 auto 3rem auto;
+  justify-content: center;
+}
+
+.search-form {
+  display: flex;
+  gap: 12px;
+  flex: 1; /* Allows the search bar to stretch */
+  min-width: 300px; /* Prevents it from getting too small on mobile */
+  margin: 0; /* Removed bottom margin since controls-container handles it */
+}
+
+/* GENRE DROPDOWN STYLES */
+.genre-select {
+  padding: 12px 20px;
+  border-radius: 25px;
+  border: 2px solid transparent;
+  background-color: #333;
+  color: white;
+  font-size: 1rem;
+  cursor: pointer;
+  outline: none;
+  transition: all 0.3s ease;
+  min-width: 150px;
+  appearance: none; /* Hides default ugly browser arrow */
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  background-size: 1em;
+}
+
+.genre-select:hover,
+.genre-select:focus {
+  background-color: #444;
+  border-color: #e50914;
+}
+
+.genre-select option {
+  background-color: #1a1a1a;
+  color: white;
+}
